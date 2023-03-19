@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    password: pokemon
+    username: pokemon
+    url: jdbc:mysql://localhost:3306/pokemon
+    
+logging:
+  level:
+    root: info
+    '[pokemon]': debug
+     
