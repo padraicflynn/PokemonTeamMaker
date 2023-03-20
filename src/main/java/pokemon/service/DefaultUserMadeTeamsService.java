@@ -43,5 +43,17 @@ public class DefaultUserMadeTeamsService implements UserMadeTeamsService{
 		
 		return userMadeTeamsDao.createTeam(team_name, trainer_id_fk, description);
 	}
+
+	@Override
+	public UserMadeTeamsEntity updateTeam(String team_name, int trainer_id_fk, String description, int team_name_pkl) {
+		log.info("The update team method was envoked with team_name={}, trainer_id_fk={}, description={}", team_name, trainer_id_fk, description);
+		return userMadeTeamsDao.updateTeam(team_name, trainer_id_fk, description, team_name_pkl);
+	}
+
+	@Override
+	public UserMadeTeamsEntity deleteTeam(int team_name_pk) {
+		log.info("The update team method was envoked with team_name_pk={}", team_name_pk);
+		return userMadeTeamsDao.deleteTeam(team_name_pk);
+	}
 	
 }

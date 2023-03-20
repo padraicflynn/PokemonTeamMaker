@@ -81,7 +81,53 @@ log.info("DAO: team_name={}, trainer_id_fk={}, description={}", team_name, train
 		//@formatter:on
 	}
 
- 
 	
+	
+	public UserMadeTeamsEntity updateTeam(String team_name, int trainer_id_fk, String description, int team_name_pk) {
+log.info("DAO: team_name={}, trainer_id_fk={}, description={} team_name_pk={}", team_name, trainer_id_fk, description, team_name_pk);
+		
+		//@formatter:off
+		String sql = ""
+				+ "UPDATE user_made_teams "
+				+ "SET team_name = :team_name, "
+				+ "trainer_id_fk = :trainer_id_fk, "
+				+ "description = :description "
+				+ "WHERE team_name_pk = :team_name_pk;";
+		
+		//@ formatter:on
+		
+		Map<String, Object> params = new HashMap<>();
+		params.put("team_name",  team_name);
+		params.put("trainer_id_fk", trainer_id_fk);
+		params.put("description", description);
+		params.put("team_name_pk", team_name_pk);
+		
+		jdbcTemplate.update(sql, params);
+		return UserMadeTeamsEntity.builder().team_name(team_name).trainer_id_fk(trainer_id_fk).description(description).team_name_pk(team_name_pk).build();
+		//@formatter:on
+	}
+
+	
+	
+	public UserMadeTeamsEntity deleteTeam(int team_name_pk) {
+log.info("DAO: team_name_pk={}");
+		
+		//@formatter:off
+		String sql = ""
+				+ "DELETE FROM user_made_teams WHERE "
+				+ "team_name_pk = :team_name_pk;";
+		
+		//@ formatter:on
+		
+		Map<String, Object> params = new HashMap<>();
+		params.put("team_name_pk",  team_name_pk);
+		
+		
+		jdbcTemplate.update(sql, params);
+		return UserMadeTeamsEntity.builder().team_name_pk(team_name_pk).build();
+	}
+
+ 
+		//@formatter:on
 //package end
 }

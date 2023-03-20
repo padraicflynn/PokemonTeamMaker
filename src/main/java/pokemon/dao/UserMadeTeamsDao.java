@@ -24,13 +24,23 @@ public interface UserMadeTeamsDao {
 	 * @param description
 	 * @return
 	 */
-	 
-
 	UserMadeTeamsEntity createTeam(String team_name, int trainer_id_fk, String description);
 
- 
+	/**
+	 * 
+	 * @param team_name
+	 * @param trainer_id_fk
+	 * @param description
+	 * @return
+	 */
+	UserMadeTeamsEntity updateTeam(String team_name, int trainer_id_fk, String description, int team_name_pk);
 
-	
+	/**
+	 * 
+	 * @param team_name_pk
+	 * @return
+	 */
+	UserMadeTeamsEntity deleteTeam(int team_name_pk);
 
 
 

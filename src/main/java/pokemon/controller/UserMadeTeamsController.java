@@ -5,8 +5,10 @@ import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -110,9 +112,98 @@ public interface UserMadeTeamsController {
 			@RequestParam(required = false) String team_name,
 			@RequestParam(required = false) int trainer_id_fk,
 		    @RequestParam(required = false) String description);
+//!!!end create team.
+	
+//!!!delete a team
+	
+	@Operation (
+			summary = "Delete a team!",
+			description = "Delete a team using the team's ID!",
+			responses = {
+					@ApiResponse
+					(responseCode = "200", 
+					description = "A team was deleted.", 
+					content = @Content(
+							mediaType = "application/json", 
+							schema = @Schema(implementation = UserMadeTeamsEntity.class))),
+					
+					@ApiResponse(responseCode = "400", description = "The request parameter is invalid.", content 
+					= @Content(mediaType = "application/json")), 
+					
+					@ApiResponse(responseCode = "404", description = "No Teams were found with the input criteria.", 
+					content = @Content(mediaType = "application/json")),
+					
+					@ApiResponse(responseCode = "500", description = "An unplanned error occured.", content = 
+					@Content(mediaType = "application/json")) 
+			},
 			
+			parameters = {
+					@Parameter(name = "team_name_pk", allowEmptyValue = false, required = false,
+							description = "The team's ID you want to delete. team name!")
+			}
+			 )
+	
+	@DeleteMapping
+	@ResponseStatus(code = HttpStatus.OK)
+	UserMadeTeamsEntity deleteTeam(int team_name_pk);
+	
+//!!!end delete a team
+	
+//!!!update a team
+	@Operation (
+			summary = "Update an existing team.",
+			description = "Update an existing team, please use and have the existing team ID ready please!",
+			responses = {
+					@ApiResponse
+					(responseCode = "200", 
+					description = "A team has been updated!", 
+					content = @Content(
+							mediaType = "application/json", 
+							schema = @Schema(implementation = UserMadeTeamsEntity.class))),
+					
+					@ApiResponse(responseCode = "400", description = "The request parameter is invalid.", content 
+					= @Content(mediaType = "application/json")), 
+					
+					@ApiResponse(responseCode = "404", description = "No Teams were found with the input criteria.", 
+					content = @Content(mediaType = "application/json")),
+					
+					@ApiResponse(responseCode = "500", description = "An unplanned error occured.", content = 
+					@Content(mediaType = "application/json")) 
+			},
+			
+			parameters = {
+					@Parameter(name = "team_name_pk", allowEmptyValue = false, required = false,
+							description = "Use the same/existing team ID please!"),
+					
+					@Parameter(name = "team_name", allowEmptyValue = false, required = false,
+							description = "Update the team name!"),
+					
+		
+					@Parameter(name = "trainer_id_fk", allowEmptyValue = false, required = false,
+							description = "Assign a trainer to the team!"),
+					
+				
+					@Parameter(name = "description", allowEmptyValue = false, required = false,
+							description = "Update the description of the team!")
+					
+			}
+			 )
+	
+	@PutMapping
+	@ResponseStatus(code = HttpStatus.OK)
+	UserMadeTeamsEntity updateTeam(
+			
+			@RequestParam(required = false) String team_name,
+			@RequestParam(required = false) int trainer_id_fk,
+		    @RequestParam(required = false) String description,
+	        @RequestParam(required = true) int team_name_pk);
+//!!!end update a team
+
+
 	
 	
 	
 // end package 
 }
+
+	 

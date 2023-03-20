@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.extern.slf4j.Slf4j;
@@ -30,11 +31,31 @@ public class DefaultUserMadeTeamsController implements UserMadeTeamsController{
 //!!! create team
 	@Override
 	public UserMadeTeamsEntity createTeam(String team_name, int trainer_id_fk, String description) {
-		log.info("team_name={}, trainer_id_fk= {}, description{}");
+		log.info("team_name={}, trainer_id_fk={}, description{}");
 		return userMadeTeamsService.createTeam(team_name, trainer_id_fk, description);
 	 }
 //!!!end create team
+
+//!!!update a team:
 	
+@Override
+	public UserMadeTeamsEntity updateTeam(String team_name, int trainer_id_fk, String description, int team_name_pk) {
+		log.info("team_name={}, trainer_id_fk={}", "description{}");
+		return userMadeTeamsService.updateTeam(team_name, trainer_id_fk, description, team_name_pk);
+	}
+	
+	
+//!!!end update team.
+	
+//!!!delete a team:
+
+	@Override
+	public UserMadeTeamsEntity deleteTeam(int team_name_pk) {
+		 log.info("team_name_pk={}");
+		return userMadeTeamsService.deleteTeam(team_name_pk);
+	}
+
+//!!!end delete a team.
 	
 //end package 
 
