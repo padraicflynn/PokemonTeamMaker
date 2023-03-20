@@ -2,7 +2,7 @@ package pokemon.entity;
 
  
 
-public enum Pokemon_type_enum {
+public enum PokemonTypeEnum {
 	 
 	
 	// making the type an enum should be easier than having make a bunch of strings of each type	

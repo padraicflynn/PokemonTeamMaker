@@ -2,6 +2,7 @@ package pokemon.controller;
 
 import java.util.List;
 
+
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +19,11 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.servers.Server;
  
-import pokemon.entity.Trainer_table_entity;
+import pokemon.entity.TrainerTableEntity;
+import pokemon.service.DefaultPokemonTrainerService;
+
+
+//import pokemon.service.DefaultPokemonTrainerService.NewTeamTrainer;
 
 @Validated
 @RequestMapping("/trainer")
@@ -26,6 +31,22 @@ import pokemon.entity.Trainer_table_entity;
 public interface PokemonTrainerController {
 
 	// formatter: off
+	
+	// This is an attempt to make a way to make a new trainer.
+	/*
+	
+	public class NewTrainerMaker {
+	 public NewTeamTrainer createTeam(NewTeamTrainer newTeamTrainer) {
+		 if(newTeamTrainer.getNewTrainer().getOperation() == TrainerOperation.CREATE) {
+			 DefaultPokemonTrainerService.createnewTrainer(newTeamTrainer.getNewTrainer());
+		 }
+		DefaultPokemonTrainerService.createTeam(teamTrainer);
+	 }
+	}
+	
+	*/
+	
+	
 	//API responses for reading the trainers table
 	@Operation (
 		      summary = "Searches the Database of trainers by ID, "
@@ -37,7 +58,7 @@ public interface PokemonTrainerController {
 		          	description = "A trainer name is returned.",
 		          	content = @Content(
 		          			mediaType = "application/json",
-		          			schema = @Schema(implementation = Trainer_table_entity.class))),
+		          			schema = @Schema(implementation = TrainerTableEntity.class))),
 		          
 		          @ApiResponse(responseCode = "400", description = "The request parameter are invalid.", content
 		          = @Content(mediaType = "application/json")),
@@ -61,7 +82,7 @@ public interface PokemonTrainerController {
 		  @GetMapping("/trainer")
 		//  @ApiResponse
 		  @ResponseStatus(code = HttpStatus.OK)
-		 List<Trainer_table_entity> fetchTrainerEntryById(
+		 List<TrainerTableEntity> fetchTrainerEntryById(
 		      @RequestParam(required = false)
 		      int trainer_id_pk);
 	

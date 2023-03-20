@@ -12,7 +12,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
-import pokemon.entity.Trainer_table_entity;
+import pokemon.entity.TrainerTableEntity;
 
 @Component
 @Slf4j
@@ -23,7 +23,7 @@ public class DefaultPokemonTrainerDao implements PokemonTrainerDao{
 	private NamedParameterJdbcTemplate jdbcTemplate;
 	
 	@Override
-	public List<Trainer_table_entity> fetchTrainerById(int trainer_id_pk) {
+	public List<TrainerTableEntity> fetchTrainerById(int trainer_id_pk) {
 
 // formatter:off
 		
@@ -39,9 +39,9 @@ public class DefaultPokemonTrainerDao implements PokemonTrainerDao{
 		return jdbcTemplate.query(sql, params, new RowMapper<>() {
 			
 			@Override
-			public Trainer_table_entity mapRow(ResultSet rs, int rowNum) throws SQLException {
+			public TrainerTableEntity mapRow(ResultSet rs, int rowNum) throws SQLException {
 				// formatter:off
-				return Trainer_table_entity.builder()
+				return TrainerTableEntity.builder()
 						.trainer_id_pk(rs.getInt("trainer_id_pk"))
 						.trainer_name(rs.getString("trainer_name"))
 						.build();

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
 import pokemon.dao.DefaultPokemonInTeamsDao;
-import pokemon.entity.Pokemon_in_teams_entity;
+import pokemon.entity.PokemonInTeamsEntity;
  
 
 @Slf4j
@@ -19,10 +19,10 @@ public class DefaultPokemonInTeamsService implements PokemonInTeamsService{
 	private DefaultPokemonInTeamsDao pokemonInTeamsDao;
 	
 	@Override
-	public List<Pokemon_in_teams_entity> fetchPokemonInTeamsById(int pokemon_in_teams_pk) {
-		log.info("There a bunch of trainer owned pokemon here! " + pokemon_in_teams_pk);
+	public List<PokemonInTeamsEntity> fetchPokemonInTeamsById(int team_name_fk) {
+		log.info("There a bunch of trainer owned pokemon here! " + team_name_fk);
 		
-		List<Pokemon_in_teams_entity> pokemonInTeamsEntry = pokemonInTeamsDao.fetchPokemonInTeamsById(pokemon_in_teams_pk);
+		List<PokemonInTeamsEntity> pokemonInTeamsEntry = pokemonInTeamsDao.fetchPokemonInTeamsById(team_name_fk);
 		
 		if(pokemonInTeamsEntry.isEmpty()) {
 			String msg = String.format("No team or Pokemon in a team were found, is there one made?");

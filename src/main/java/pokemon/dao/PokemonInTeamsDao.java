@@ -2,10 +2,10 @@ package pokemon.dao;
 
 import java.util.List;
 
-import pokemon.entity.Pokemon_in_teams_entity;
+import pokemon.entity.PokemonInTeamsEntity;
 
 public interface PokemonInTeamsDao {
 
-	List<Pokemon_in_teams_entity> fetchPokemonInTeamsById(int pokemon_in_teams_pk);
+	List<PokemonInTeamsEntity> fetchPokemonInTeamsById(int team_name_fk);
 
 }

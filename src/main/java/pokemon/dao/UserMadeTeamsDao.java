@@ -1,11 +1,39 @@
 package pokemon.dao;
 
 import java.util.List;
+import java.util.Optional;
 
-import pokemon.entity.User_made_teams_entity;
+import pokemon.entity.UserMadeTeamsEntity;
 
 public interface UserMadeTeamsDao {
 
-	List<User_made_teams_entity> fetchUserMadeTeamsByID(int team_name_pk);
+	
+	//read teams
+	/**
+	 * 
+	 * @param team_name_pk
+	 * @return
+	 */
+	List<UserMadeTeamsEntity> fetchUserMadeTeamsByID(int team_name_pk);
+	
+	//create teams
+	/**
+	 * 
+	 * @param team_name
+	 * @param trainer_id_fk
+	 * @param description
+	 * @return
+	 */
+	 
+
+	UserMadeTeamsEntity createTeam(String team_name, int trainer_id_fk, String description);
+
+ 
+
+	
+
+
+
+ 
 
 }

@@ -1,12 +1,18 @@
 package pokemon.service;
 
 import java.util.List;
+import java.util.Optional;
 
-
-import pokemon.entity.User_made_teams_entity;
+import pokemon.entity.UserMadeTeamsEntity;
 
 public interface UserMadeTeamsService {
 
-	List<User_made_teams_entity> fetchUserMadeTeamsById(int team_name_pk);
+	//!!!Read/Fetch user made team
+	List<UserMadeTeamsEntity> fetchUserMadeTeamsById(int team_name_pk);
+	//!!!
 
+	UserMadeTeamsEntity createTeam(String team_name, int trainer_id_fk, String description);
+	
+	//!!!
+	
 }

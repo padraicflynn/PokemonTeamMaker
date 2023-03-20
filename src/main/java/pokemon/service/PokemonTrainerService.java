@@ -2,10 +2,11 @@ package pokemon.service;
 
 import java.util.List;
 
-import pokemon.entity.Trainer_table_entity;
+import pokemon.entity.TrainerTableEntity;
 
 public interface PokemonTrainerService {
 
-	  List<Trainer_table_entity> fetchTrainerEntryById(int trainer_id_pk);
+	  List<TrainerTableEntity> fetchTrainerEntryById(int trainer_id_pk);
+	   
 
 }

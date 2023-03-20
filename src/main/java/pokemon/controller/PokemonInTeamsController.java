@@ -17,7 +17,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.servers.Server;
-import pokemon.entity.Pokemon_in_teams_entity;
+import pokemon.entity.PokemonInTeamsEntity;
  
 
 @Validated
@@ -37,7 +37,7 @@ public interface PokemonInTeamsController {
 						description = "A team and trainer are returned.", 
 						content = @Content(
 								mediaType = "application/json", 
-								schema = @Schema(implementation = Pokemon_in_teams_entity.class))),
+								schema = @Schema(implementation = PokemonInTeamsEntity.class))),
 						
 						@ApiResponse(responseCode = "400", description = "The request parameter is invalid.", content 
 						= @Content(mediaType = "application/json")), 
@@ -50,7 +50,7 @@ public interface PokemonInTeamsController {
 				},
 				
 				parameters = {
-						@Parameter(name = "pokemon_in_teams_pk", allowEmptyValue = false, required = false,
+						@Parameter(name = "team_name_fk", allowEmptyValue = false, required = false,
 								description = "Enter the team ID")
 						
 				}
@@ -58,7 +58,7 @@ public interface PokemonInTeamsController {
 		
 		@GetMapping
 		@ResponseStatus(code = HttpStatus.OK)
-		List<Pokemon_in_teams_entity> fetchPokemonInTeamsById( 
+		List<PokemonInTeamsEntity> fetchPokemonInTeamsById( 
 				@RequestParam(required = false)
 				int team_name_pk);
 		

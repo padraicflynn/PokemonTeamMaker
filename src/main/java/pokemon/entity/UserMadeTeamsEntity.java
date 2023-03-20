@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class User_made_teams_entity {
+public class UserMadeTeamsEntity {
 
 	private int team_name_pk;
 	private String team_name;

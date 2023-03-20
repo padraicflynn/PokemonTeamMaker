@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
-import pokemon.entity.Pokemon_in_teams_entity;
+import pokemon.entity.PokemonInTeamsEntity;
 import pokemon.service.PokemonInTeamsService;
 
 @RestController
@@ -16,7 +16,7 @@ public class DefaultPokemonInTeamsController implements PokemonInTeamsController
 	private PokemonInTeamsService pokemonInTeamsService;
 	
 	@Override
-	public List<Pokemon_in_teams_entity> fetchPokemonInTeamsById(int pokemon_in_teams_pk) {
-		return pokemonInTeamsService.fetchPokemonInTeamsById(pokemon_in_teams_pk);
+	public List<PokemonInTeamsEntity> fetchPokemonInTeamsById(int team_name_fk) {
+		return pokemonInTeamsService.fetchPokemonInTeamsById(team_name_fk);
 	}
 }

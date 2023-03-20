@@ -15,13 +15,13 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
-import pokemon.entity.Pokedex_entry_entity;
-import pokemon.entity.Pokemon_type_enum;
+import pokemon.entity.PokedexEntryEntity;
+import pokemon.entity.PokemonTypeEnum;
 
 
 @Component
 @Slf4j
-public class DefaultPokemonTeamDao implements PokemonTeamDao{
+public class DefaultPokedexEntryDao implements PokedexEntryDao{
 	
 	
 	 
@@ -31,8 +31,8 @@ public class DefaultPokemonTeamDao implements PokemonTeamDao{
 	
 	// method to read list of pokemon from pokedex_entry table
 	@Override
-	public List<Pokedex_entry_entity> fetchPokedexEntry
-	(int pokemon_pk, String pokemon_name, Pokemon_type_enum pokemon_type) {
+	public List<PokedexEntryEntity> fetchPokedexEntry
+	(int pokemon_pk, String pokemon_name, PokemonTypeEnum pokemon_type) {
 		 
 		// @formatter:off
 		
@@ -53,20 +53,20 @@ public class DefaultPokemonTeamDao implements PokemonTeamDao{
 				new RowMapper<>() {
 			
 			@Override
-			public Pokedex_entry_entity mapRow(ResultSet rs, int rowNum) throws SQLException {
+			public PokedexEntryEntity mapRow(ResultSet rs, int rowNum) throws SQLException {
 				// @formatter:off
-				return Pokedex_entry_entity.builder()
+				return PokedexEntryEntity.builder()
 						.pokemon_pk(rs.getInt("pokemon_pk"))
 						.pokemon_name(rs.getString("pokemon_name"))
-						.pokemon_type(Pokemon_type_enum.valueOf(rs.getString("pokemon_type")))
+						.pokemon_type(PokemonTypeEnum.valueOf(rs.getString("pokemon_type")))
 						.build();
 				
 				// @formatter:on
 			}});
 			
 		}
-/* public List<Pokedex_entry_entity> fetchPokedexEntry
-	(int pokemon_pk, String pokemon_name, Pokemon_type_enum pokemon_type, Pokemon_type_enum pokemon_type2) {
+/* public List<PokedexEntryEntity> fetchPokedexEntry
+	(int pokemon_pk, String pokemon_name, PokemonTypeEnum pokemon_type, PokemonTypeEnum pokemon_type2) {
 		 
 		// @formatter:off
 		
@@ -87,13 +87,13 @@ public class DefaultPokemonTeamDao implements PokemonTeamDao{
 				new RowMapper<>() {
 			
 			@Override
-			public Pokedex_entry_entity mapRow(ResultSet rs, int rowNum) throws SQLException {
+			public PokedexEntryEntity mapRow(ResultSet rs, int rowNum) throws SQLException {
 				// @formatter:off
-				return Pokedex_entry_entity.builder()
+				return PokedexEntryEntity.builder()
 						.pokemon_pk(rs.getInt("pokemon_pk"))
 						.pokemon_name(rs.getString("pokemon_name"))
-						.pokemon_type(Pokemon_type_enum.valueOf(rs.getString("pokemon_type"))
-						.pokemon_type2(Pokemon_type_enum.valueOf(rs.getString("pokemon_type2")))
+						.pokemon_type(PokemonTypeEnum.valueOf(rs.getString("pokemon_type"))
+						.pokemon_type2(PokemonTypeEnum.valueOf(rs.getString("pokemon_type2")))
 						.build();
 				
 				// @formatter:on
@@ -103,7 +103,7 @@ public class DefaultPokemonTeamDao implements PokemonTeamDao{
 */
 	
 	// !!!!!!!! Pokemon by ID !!!!!!!
-	public List<Pokedex_entry_entity> fetchPokedexEntryByID(int pokemon_pk) {
+	public List<PokedexEntryEntity> fetchPokedexEntryByID(int pokemon_pk) {
 		/// @formatter:off
 		
 		String sql = ""
@@ -119,12 +119,12 @@ public class DefaultPokemonTeamDao implements PokemonTeamDao{
 				new RowMapper<>() {
 			
 			@Override
-			public Pokedex_entry_entity mapRow(ResultSet rs, int rowNum) throws SQLException {
+			public PokedexEntryEntity mapRow(ResultSet rs, int rowNum) throws SQLException {
 				// @formatter:off
-				return Pokedex_entry_entity.builder()
+				return PokedexEntryEntity.builder()
 						.pokemon_pk(rs.getInt("pokemon_pk"))
 						.pokemon_name(rs.getString("pokemon_name"))
-						.pokemon_type(Pokemon_type_enum.valueOf(rs.getString("pokemon_type")))
+						.pokemon_type(PokemonTypeEnum.valueOf(rs.getString("pokemon_type")))
 						.build();
 				
 				// @formatter:on
@@ -135,7 +135,7 @@ public class DefaultPokemonTeamDao implements PokemonTeamDao{
 	
 	// !!!!!!!!!!!!!! Pokemon team by name !!!!!!!!!!!!!!!!!!!!!!!!
 	
-	public List<Pokedex_entry_entity> fetchPokedexEntryByName(String pokemon_name) {
+	public List<PokedexEntryEntity> fetchPokedexEntryByName(String pokemon_name) {
 		/// @formatter:off
 		
 				String sql = ""
@@ -154,12 +154,12 @@ public class DefaultPokemonTeamDao implements PokemonTeamDao{
 						new RowMapper<>() {
 					
 					@Override
-					public Pokedex_entry_entity mapRow(ResultSet rs, int rowNum) throws SQLException {
+					public PokedexEntryEntity mapRow(ResultSet rs, int rowNum) throws SQLException {
 						// @formatter:off
-						return Pokedex_entry_entity.builder()
+						return PokedexEntryEntity.builder()
 								.pokemon_pk(rs.getInt("pokemon_pk"))
 								.pokemon_name(rs.getString("pokemon_name"))
-								.pokemon_type(Pokemon_type_enum.valueOf(rs.getString("pokemon_type")))
+								.pokemon_type(PokemonTypeEnum.valueOf(rs.getString("pokemon_type")))
 								.build();
 						
 						// @formatter:on
@@ -169,7 +169,7 @@ public class DefaultPokemonTeamDao implements PokemonTeamDao{
 	// End pokemon by name !!!
 	// !!!!! Pokemon by type!!!!
 	
-	public List<Pokedex_entry_entity> fetchPokedexEntryByType(Pokemon_type_enum pokemon_type) {
+	public List<PokedexEntryEntity> fetchPokedexEntryByType(PokemonTypeEnum pokemon_type) {
 		/// @formatter:off
 		
 		String sql = ""
@@ -190,12 +190,12 @@ public class DefaultPokemonTeamDao implements PokemonTeamDao{
 			//num row for this may be more than one?
 			@Override
 			
-			public Pokedex_entry_entity mapRow(ResultSet rs, int rowNum) throws SQLException {
+			public PokedexEntryEntity mapRow(ResultSet rs, int rowNum) throws SQLException {
 				// @formatter:off
-				return Pokedex_entry_entity.builder()
+				return PokedexEntryEntity.builder()
 						.pokemon_pk(rs.getInt("pokemon_pk"))
 						.pokemon_name(rs.getString("pokemon_name"))
-						.pokemon_type(Pokemon_type_enum.valueOf(rs.getString("pokemon_type")))
+						.pokemon_type(PokemonTypeEnum.valueOf(rs.getString("pokemon_type")))
 						.build();
 				
 				// @formatter:on

@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Pokedex_entry_entity implements Comparable<Pokedex_entry_entity>{
+public class PokedexEntryEntity implements Comparable<PokedexEntryEntity>{
 	
 	// here we set up our entities for the database. this represents all the info in our database,
 	// and will take the info from the data base and 
@@ -24,8 +24,8 @@ public class Pokedex_entry_entity implements Comparable<Pokedex_entry_entity>{
 
 	private int pokemon_pk;
 	private String pokemon_name;
-	private Pokemon_type_enum pokemon_type;
-//	private Pokemon_type_enum pokemon_type2;
+	private PokemonTypeEnum pokemon_type;
+//	private PokemonTypeEnum pokemon_type2;
 	
 	 
 	// @JsonIgnore
@@ -36,14 +36,14 @@ public class Pokedex_entry_entity implements Comparable<Pokedex_entry_entity>{
 	
 	
 	@Override
-	public int compareTo(Pokedex_entry_entity that) {
+	public int compareTo(PokedexEntryEntity that) {
 		 
 		
 		// Formatter:off
 		return Comparator
-				.comparing(Pokedex_entry_entity::getPokemon_pk)
-				.thenComparing(Pokedex_entry_entity::getPokemon_name)
-				.thenComparing(Pokedex_entry_entity::getPokemon_type)
+				.comparing(PokedexEntryEntity::getPokemon_pk)
+				.thenComparing(PokedexEntryEntity::getPokemon_name)
+				.thenComparing(PokedexEntryEntity::getPokemon_type)
 				.compare(this,  that);
 	}
 	

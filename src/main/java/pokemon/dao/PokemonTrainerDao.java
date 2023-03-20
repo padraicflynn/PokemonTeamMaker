@@ -2,10 +2,10 @@ package pokemon.dao;
 
 import java.util.List;
 
-import pokemon.entity.Trainer_table_entity;
+import pokemon.entity.TrainerTableEntity;
 
 public interface PokemonTrainerDao {
 
-	List<Trainer_table_entity> fetchTrainerById(int trainer_id_pk);
+	List<TrainerTableEntity> fetchTrainerById(int trainer_id_pk);
 	
 }

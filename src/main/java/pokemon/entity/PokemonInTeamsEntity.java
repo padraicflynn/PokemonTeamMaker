@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class Pokemon_in_teams_entity {
+public class PokemonInTeamsEntity {
 
 	private int pokemon_in_teams_pk;
 	private int team_name_fk;

@@ -24,8 +24,8 @@ import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.servers.Server;
-import pokemon.entity.Pokedex_entry_entity;
-import pokemon.entity.Pokemon_type_enum;
+import pokemon.entity.PokedexEntryEntity;
+import pokemon.entity.PokemonTypeEnum;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.*;
@@ -36,7 +36,7 @@ import io.swagger.v3.oas.annotations.*;
 @OpenAPIDefinition(info = @Info(title = "Pokemon team maker"), servers = { @Server(url = "http://localhost:8080", description = "Local server.")})
 
 
-public interface PokemonTeamMakerControllerInterface {
+public interface PokedexEntryController {
 	  
 	 // formatter: off
 
@@ -52,7 +52,7 @@ public interface PokemonTeamMakerControllerInterface {
 	          	description = "A list of Pokemon is returned.",
 	          	content = @Content(
 	          			mediaType = "application/json",
-	          			schema = @Schema(implementation = Pokedex_entry_entity.class))),
+	          			schema = @Schema(implementation = PokedexEntryEntity.class))),
 	          
 	          @ApiResponse(responseCode = "400", description = "The request parameter are invalid.", content
 	          = @Content(mediaType = "application/json")),
@@ -78,13 +78,13 @@ public interface PokemonTeamMakerControllerInterface {
 	  
 	  @GetMapping
 	  @ResponseStatus(code = HttpStatus.OK)
-	 List<Pokedex_entry_entity> fetchPokedexEntry(
+	 List<PokedexEntryEntity> fetchPokedexEntry(
 	      @RequestParam(required = false)
 	      int pokemon_pk,
 	      @RequestParam(required = false)
 	      String pokemon_name,
 	      @RequestParam(required = false)
-          Pokemon_type_enum pokemon_type);
+          PokemonTypeEnum pokemon_type);
 	 	 
 	// NEXT OPERATION: SEARCH BY ID		 
 		
@@ -98,7 +98,7 @@ public interface PokemonTeamMakerControllerInterface {
 		          	description = "A Pokemon is returned.",
 		          	content = @Content(
 		          			mediaType = "application/json",
-		          			schema = @Schema(implementation = Pokedex_entry_entity.class))),
+		          			schema = @Schema(implementation = PokedexEntryEntity.class))),
 		          
 		          @ApiResponse(responseCode = "400", description = "The request parameter are invalid.", content
 		          = @Content(mediaType = "application/json")),
@@ -121,7 +121,7 @@ public interface PokemonTeamMakerControllerInterface {
 		  @GetMapping("/ID")
 		//  @ApiResponse
 		  @ResponseStatus(code = HttpStatus.OK)
-		 List<Pokedex_entry_entity> fetchPokedexEntryByID(
+		 List<PokedexEntryEntity> fetchPokedexEntryByID(
 		      @RequestParam(required = false)
 		      int pokemon_pk);
 
@@ -138,7 +138,7 @@ public interface PokemonTeamMakerControllerInterface {
 			          	description = "A Pokemon is returned.",
 			          	content = @Content(
 			          			mediaType = "application/json",
-			          			schema = @Schema(implementation = Pokedex_entry_entity.class))),
+			          			schema = @Schema(implementation = PokedexEntryEntity.class))),
 			          
 			          @ApiResponse(responseCode = "400", description = "The request parameter are invalid.", content
 			          = @Content(mediaType = "application/json")),
@@ -161,7 +161,7 @@ public interface PokemonTeamMakerControllerInterface {
 			  @GetMapping("/Name")
 			//  @ApiResponse
 			  @ResponseStatus(code = HttpStatus.OK)
-			 List<Pokedex_entry_entity> fetchPokedexEntryByName(
+			 List<PokedexEntryEntity> fetchPokedexEntryByName(
 			      @RequestParam(required = false)
 			      String pokemon_name);
 
@@ -181,7 +181,7 @@ public interface PokemonTeamMakerControllerInterface {
 				          	description = "A Pokemon of the type is returned.",
 				          	content = @Content(
 				          			mediaType = "application/json",
-				          			schema = @Schema(implementation = Pokedex_entry_entity.class))),
+				          			schema = @Schema(implementation = PokedexEntryEntity.class))),
 				          
 				          @ApiResponse(responseCode = "400", description = "The request parameter are invalid.", content
 				          = @Content(mediaType = "application/json")),
@@ -204,9 +204,9 @@ public interface PokemonTeamMakerControllerInterface {
 				  @GetMapping("/Type")
 				//  @ApiResponse
 				  @ResponseStatus(code = HttpStatus.OK)
-				 List<Pokedex_entry_entity> fetchPokedexEntryByType(
+				 List<PokedexEntryEntity> fetchPokedexEntryByType(
 				      @RequestParam(required = false)
-				      Pokemon_type_enum pokemon_type);
+				      PokemonTypeEnum pokemon_type);
 
 // !!! END SEARCH BY Type
 	 

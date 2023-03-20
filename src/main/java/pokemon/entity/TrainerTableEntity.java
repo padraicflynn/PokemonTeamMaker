@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Trainer_table_entity {
+public class TrainerTableEntity {
 	
 	private int trainer_id_pk;
 	private String trainer_name;
