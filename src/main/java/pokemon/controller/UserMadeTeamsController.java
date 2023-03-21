@@ -75,7 +75,7 @@ public interface UserMadeTeamsController {
 			description = "Create a team, you must already have a trainer PK to use for the trainer FK",
 			responses = {
 					@ApiResponse
-					(responseCode = "200", 
+					(responseCode = "201", 
 					description = "A new team is created", 
 					content = @Content(
 							mediaType = "application/json", 

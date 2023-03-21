@@ -19,4 +19,8 @@ public class DefaultPokemonInTeamsController implements PokemonInTeamsController
 	public List<PokemonInTeamsEntity> fetchPokemonInTeamsById(int team_name_fk) {
 		return pokemonInTeamsService.fetchPokemonInTeamsById(team_name_fk);
 	}
+	
+	public PokemonInTeamsEntity addPokemonToTeam(int team_name_fk, int pokemon_pk_fk) {
+		return pokemonInTeamsService.addPokemonToTeam(team_name_fk, pokemon_pk_fk);
+	}
 }

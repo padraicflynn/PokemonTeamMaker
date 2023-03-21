@@ -23,6 +23,20 @@ public class DefaultPokemonInTeamsDao implements PokemonInTeamsDao{
 	private NamedParameterJdbcTemplate jdbcTemplate;
 	
 	@Override
+	public PokemonInTeamsEntity addPokemonToTeam(int team_name_fk, int pokemon_pk_fk) {
+		String sql = ""
+				+ "INSERT INTO pokemon_in_teams (team_name_fk, pokemon_pk_fk) VALUES (:team_name_fk, :pokemon_pk_fk)";
+		
+				Map<String, Object> params = new HashMap<>();
+				params.put("team_name_fk", team_name_fk);
+				params.put("pokemon_pk_fk", pokemon_pk_fk);
+				
+				jdbcTemplate.update(sql, params);
+				return PokemonInTeamsEntity.builder().team_name_fk(team_name_fk).pokemon_pk_fk(pokemon_pk_fk).build();
+	}
+	
+	
+	@Override
 	public List<PokemonInTeamsEntity> fetchPokemonInTeamsById(int team_name_fk) {
 		
 		 

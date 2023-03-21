@@ -31,6 +31,12 @@ public class DefaultPokemonInTeamsService implements PokemonInTeamsService{
 		}
 		return pokemonInTeamsEntry;
 	}
+
+	@Override
+	public PokemonInTeamsEntity addPokemonToTeam(int team_name_fk, int pokemon_pk_fk) {
+		log.info("We are adding some new team members!" + pokemon_pk_fk);
+		return pokemonInTeamsDao.addPokemonToTeam(team_name_fk, pokemon_pk_fk);
+	}
  
 
 	 
