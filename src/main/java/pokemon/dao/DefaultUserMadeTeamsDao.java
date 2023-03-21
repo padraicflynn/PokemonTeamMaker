@@ -50,13 +50,7 @@ public class DefaultUserMadeTeamsDao implements UserMadeTeamsDao{
 								 .build();
 					 }});
 					 }
-		
- 
-	 
-
 	
-	
-
 // create user made teams
 	@Override
 	public UserMadeTeamsEntity createTeam(String team_name, int trainer_id_fk, String description) {

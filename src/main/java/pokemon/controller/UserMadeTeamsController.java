@@ -56,7 +56,7 @@ public interface UserMadeTeamsController {
 			
 			parameters = {
 					@Parameter(name = "team_name_pk", allowEmptyValue = false, required = false,
-							description = "The team from the user made teams table")
+							description = "The team from the user made teams table!")
 					
 			}
 			 )
@@ -139,7 +139,7 @@ public interface UserMadeTeamsController {
 			
 			parameters = {
 					@Parameter(name = "team_name_pk", allowEmptyValue = false, required = false,
-							description = "The team's ID you want to delete. team name!")
+							description = "The team's ID you want to delete!")
 			}
 			 )
 	

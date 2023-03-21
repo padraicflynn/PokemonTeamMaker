@@ -25,33 +25,67 @@ public class DefaultPokemonTrainerDao implements PokemonTrainerDao{
 	@Override
 	public List<TrainerTableEntity> fetchTrainerById(int trainer_id_pk) {
 
-// formatter:off
+		// formatter:off
+				
+				String sql = ""
+						+ "SELECT * "
+						+ "FROM trainer_table "
+						+ "WHERE trainer_id_pk = :trainer_id_pk ";
+		// formatter:on
+				
+				Map<String, Object> params = new HashMap<>();
+				params.put("trainer_id_pk", trainer_id_pk);
+				
+				return jdbcTemplate.query(sql, params, new RowMapper<>() {
+					
+					@Override
+					public TrainerTableEntity mapRow(ResultSet rs, int rowNum) throws SQLException {
+						// formatter:off
+						return TrainerTableEntity.builder()
+								.trainer_id_pk(rs.getInt("trainer_id_pk"))
+								.trainer_name(rs.getString("trainer_name"))
+								.build();
+						
+						// formatter:on
+					}});
+					}
+				// formatter:on
+
+	
+	
+	public TrainerTableEntity createTrainer(String trainer_name) {
+		log.info("DAO: trainer_name={}", trainer_name);
+	//// formatter:off
+		
+				String sql = ""
+						+ "INSERT INTO trainer_table (trainer_name) VALUES (:trainer_name)";
+		
+				Map<String, Object> params = new HashMap<>();
+				params.put("trainer_name", trainer_name);
+				
+				jdbcTemplate.update(sql, params);
+				return  TrainerTableEntity.builder().trainer_name(trainer_name).build();
+				
+	}
+
+	@Override
+	public TrainerTableEntity deleteTrainer(int trainer_id_pk) {
+	//// formatter:off
 		
 		String sql = ""
-				+ "SELECT * "
-				+ "FROM trainer_table "
-				+ "WHERE trainer_id_pk = :trainer_id_pk ";
-// formatter:on
-		
+					+ "DELETE FROM trainer_table WHERE "
+					+ "trainer_id_pk = :trainer_id_pk;";
+	
 		Map<String, Object> params = new HashMap<>();
 		params.put("trainer_id_pk", trainer_id_pk);
 		
-		return jdbcTemplate.query(sql, params, new RowMapper<>() {
+		jdbcTemplate.update(sql, params);
+		return  TrainerTableEntity.builder().trainer_id_pk(trainer_id_pk).build();
 			
-			@Override
-			public TrainerTableEntity mapRow(ResultSet rs, int rowNum) throws SQLException {
-				// formatter:off
-				return TrainerTableEntity.builder()
-						.trainer_id_pk(rs.getInt("trainer_id_pk"))
-						.trainer_name(rs.getString("trainer_name"))
-						.build();
-				
-				// formatter:on
-			}});
-			}
-		 
+	
 	}
 	
+	}
 	
 
  

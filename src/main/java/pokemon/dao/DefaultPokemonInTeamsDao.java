@@ -18,15 +18,6 @@ import pokemon.entity.PokemonInTeamsEntity;
 @Slf4j
 public class DefaultPokemonInTeamsDao implements PokemonInTeamsDao{
 	
-	
-	
-	/*
-	public void getPokemonName() {
-		return pokemon_name
-	}
-	*/
-	
-	
 	@Autowired
 	private NamedParameterJdbcTemplate jdbcTemplate;
 	
