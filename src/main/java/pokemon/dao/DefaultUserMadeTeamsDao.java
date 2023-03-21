@@ -1,6 +1,7 @@
 package pokemon.dao;
 
 import java.sql.ResultSet;
+
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
 import pokemon.entity.UserMadeTeamsEntity;
+ 
 
 // the component scanner is useful as it helps me when builder other classes to call back on component classes
 @Component
@@ -28,26 +30,26 @@ public class DefaultUserMadeTeamsDao implements UserMadeTeamsDao{
 		 
 		// formatter:off
 		
-				String sql = ""
-						+ "SELECT * "
-						+ "FROM user_made_teams "
-						+ "WHERE team_name_pk = :team_name_pk ";
-		// formatter:on
-				
-				Map<String, Object> params = new HashMap<>();
-				params.put("team_name_pk", team_name_pk);
-				
-				return jdbcTemplate.query(sql, params, new RowMapper<>() {
-					
-					 @Override
-					 public UserMadeTeamsEntity mapRow(ResultSet rs, int rowNum) throws SQLException {
-						 // formatter:off
-						 return UserMadeTeamsEntity.builder()
-								 .team_name_pk(rs.getInt("team_name_pk"))
-								 .team_name(rs.getString("team_name"))
-								 .trainer_id_fk(rs.getInt("trainer_id_fk"))
-								 .description(rs.getString("description"))
-								 .build();
+		String sql = ""
+				+ "SELECT * "
+				+ "FROM user_made_teams "
+				+ "WHERE team_name_pk = :team_name_pk ";
+// formatter:on
+		
+		Map<String, Object> params = new HashMap<>();
+		params.put("team_name_pk", team_name_pk);
+		
+		return jdbcTemplate.query(sql, params, new RowMapper<>() {
+			
+			 @Override
+			 public UserMadeTeamsEntity mapRow(ResultSet rs, int rowNum) throws SQLException {
+				 // formatter:off
+				 return UserMadeTeamsEntity.builder()
+						 .team_name_pk(rs.getInt("team_name_pk"))
+						 .team_name(rs.getString("team_name"))
+						 .trainer_id_fk(rs.getInt("trainer_id_fk"))
+						 .description(rs.getString("description"))
+						 .build();
 					 }});
 					 }
 	

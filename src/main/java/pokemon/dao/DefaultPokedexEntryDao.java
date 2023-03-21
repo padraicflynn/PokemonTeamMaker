@@ -65,43 +65,7 @@ public class DefaultPokedexEntryDao implements PokedexEntryDao{
 			}});
 			
 		}
-/* public List<PokedexEntryEntity> fetchPokedexEntry
-	(int pokemon_pk, String pokemon_name, PokemonTypeEnum pokemon_type, PokemonTypeEnum pokemon_type2) {
-		 
-		// @formatter:off
-		
-		String sql = ""
-				+ "SELECT * " 
-				+ "FROM pokedex_entry "
-				+ "WHERE pokemon_name = :pokemon_name AND pokemon_type = :pokemon_type";
-		// @formatter: on
-		
-		Map<String, Object> params = new HashMap<>();
-		params.put("pokemon_name", pokemon_name);
-		params.put("pokemon_type", pokemon_type.toString());
-		params.put("pokemon_type", pokemon_type2.toString());				
-			
-		
-		
-		return jdbcTemplate.query(sql, params,
-				new RowMapper<>() {
-			
-			@Override
-			public PokedexEntryEntity mapRow(ResultSet rs, int rowNum) throws SQLException {
-				// @formatter:off
-				return PokedexEntryEntity.builder()
-						.pokemon_pk(rs.getInt("pokemon_pk"))
-						.pokemon_name(rs.getString("pokemon_name"))
-						.pokemon_type(PokemonTypeEnum.valueOf(rs.getString("pokemon_type"))
-						.pokemon_type2(PokemonTypeEnum.valueOf(rs.getString("pokemon_type2")))
-						.build();
-				
-				// @formatter:on
-			}});
-			
-		}
-*/
-	
+
 	// !!!!!!!! Pokemon by ID !!!!!!!
 	public List<PokedexEntryEntity> fetchPokedexEntryByID(int pokemon_pk) {
 		/// @formatter:off

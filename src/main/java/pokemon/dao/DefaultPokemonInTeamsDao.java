@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
 import pokemon.entity.PokemonInTeamsEntity;
+import pokemon.entity.PokemonTypeEnum;
 
 @Component
 @Slf4j
@@ -24,11 +25,14 @@ public class DefaultPokemonInTeamsDao implements PokemonInTeamsDao{
 	@Override
 	public List<PokemonInTeamsEntity> fetchPokemonInTeamsById(int team_name_fk) {
 		
-		//formatter:off
+		 
 		
 		String sql = ""
 				+ "SELECT * "
 				+ "FROM pokemon_in_teams "
+				+ "RIGHT JOIN pokedex_entry ON pokemon_in_teams.pokemon_pk_fk = pokedex_entry.pokemon_pk "
+				+ "LEFT JOIN user_made_teams ON pokemon_in_teams.team_name_fk = user_made_teams.team_name_pk "
+			//	+ "LEFT JOIN trainer_table ON user_made_teams.trainer_id_fk = trainer_table.trainder_id_pk "
 				+ "WHERE team_name_fk = :team_name_fk "; 
 		// formatter:on
 		
@@ -41,9 +45,15 @@ public class DefaultPokemonInTeamsDao implements PokemonInTeamsDao{
 			public PokemonInTeamsEntity mapRow(ResultSet rs, int rowNum) throws SQLException {
 				// formatter:off
 				return PokemonInTeamsEntity.builder()
-						
+						 
 						.team_name_fk(rs.getInt("team_name_fk"))
 						.pokemon_pk_fk(rs.getInt("pokemon_pk_fk"))
+						.pokemon_name(rs.getString("pokemon_name"))
+						.team_name(rs.getString("team_name"))
+						.team_name_pk(rs.getInt("team_name_pk"))
+						.pokemon_type(PokemonTypeEnum.valueOf(rs.getString("pokemon_type")))
+					//	.trainer_id_fk(rs.getInt("trainer_id_fk"))
+					//	.trainer_name((rs.getString("trainer_name")))
 						.build();
 			}});
 		 

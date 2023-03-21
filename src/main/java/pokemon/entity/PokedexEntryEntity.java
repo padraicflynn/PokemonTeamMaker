@@ -25,7 +25,7 @@ public class PokedexEntryEntity implements Comparable<PokedexEntryEntity>{
 	private int pokemon_pk;
 	private String pokemon_name;
 	private PokemonTypeEnum pokemon_type;
-//	private PokemonTypeEnum pokemon_type2;
+ 
 	
 	 
 	// @JsonIgnore

@@ -18,5 +18,8 @@ public class UserMadeTeamsEntity {
 	private int trainer_id_fk;
 	private String description;
 	
+	//these two are here for the join table/builder to show more info when reading a team
+	 private String pokemon_name;
+	 private int pokemon_pk_fk;
 
 }
