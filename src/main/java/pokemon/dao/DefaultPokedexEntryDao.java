@@ -19,17 +19,18 @@ import pokemon.entity.PokedexEntryEntity;
 import pokemon.entity.PokemonTypeEnum;
 
 
+//Here is our Data Access Object layer. We use JDBC template to use named parameter instead of '?' place holders,
+// which we will use with our sql statements that ask the database for info, then we use 
+// a hash map to assign the returned info to a key/value, and the value is used in a builder which
+// is returned in the method we use/call. 
 @Component
 @Slf4j
 public class DefaultPokedexEntryDao implements PokedexEntryDao{
-	
-	
 	 
 	@Autowired
 	private NamedParameterJdbcTemplate jdbcTemplate;
 	 
-	
-	// method to read list of pokemon from pokedex_entry table
+	// method to read list of Pokémon from pokedex_entry table
 	@Override
 	public List<PokedexEntryEntity> fetchPokedexEntry
 	(int pokemon_pk, String pokemon_name, PokemonTypeEnum pokemon_type) {
@@ -40,15 +41,11 @@ public class DefaultPokedexEntryDao implements PokedexEntryDao{
 				+ "SELECT * " 
 				+ "FROM pokedex_entry "
 				+ "WHERE pokemon_name = :pokemon_name AND pokemon_type = :pokemon_type";
-		// @formatter: on
-		
+	 
 		Map<String, Object> params = new HashMap<>();
 		params.put("pokemon_name", pokemon_name);
 		params.put("pokemon_type", pokemon_type.toString());
-	
-			
-		
-		
+ 	
 		return jdbcTemplate.query(sql, params,
 				new RowMapper<>() {
 			
@@ -66,7 +63,7 @@ public class DefaultPokedexEntryDao implements PokedexEntryDao{
 			
 		}
 
-	// !!!!!!!! Pokemon by ID !!!!!!!
+	// Here we search the Pokédex by the ID number.
 	public List<PokedexEntryEntity> fetchPokedexEntryByID(int pokemon_pk) {
 		/// @formatter:off
 		
@@ -74,8 +71,7 @@ public class DefaultPokedexEntryDao implements PokedexEntryDao{
 				+ "SELECT * " 
 				+ "FROM pokedex_entry "
 				+ "WHERE pokemon_pk = :pokemon_pk ";
-		// @formatter: on
-		
+ 
 		Map<String, Object> params = new HashMap<>();
 		params.put("pokemon_pk", pokemon_pk);
 		
@@ -94,11 +90,8 @@ public class DefaultPokedexEntryDao implements PokedexEntryDao{
 				// @formatter:on
 			}});
 	}
-
-	// !!!!!!!!! End Pokemon by ID !!!!!!!!!!!!!
-	
-	// !!!!!!!!!!!!!! Pokemon team by name !!!!!!!!!!!!!!!!!!!!!!!!
-	
+  
+	//  Searching by a name. 
 	public List<PokedexEntryEntity> fetchPokedexEntryByName(String pokemon_name) {
 		/// @formatter:off
 		
@@ -129,10 +122,9 @@ public class DefaultPokedexEntryDao implements PokedexEntryDao{
 						// @formatter:on
 					}});
 	}
-
-	// End pokemon by name !!!
-	// !!!!! Pokemon by type!!!!
+ 
 	
+	// Types are in an enum, so we convert that to a String before using the builder. 
 	public List<PokedexEntryEntity> fetchPokedexEntryByType(PokemonTypeEnum pokemon_type) {
 		/// @formatter:off
 		
@@ -144,11 +136,7 @@ public class DefaultPokedexEntryDao implements PokedexEntryDao{
 		
 		Map<String, Object> params = new HashMap<>();
 		params.put("pokemon_type", pokemon_type.toString());
-		 
-					
-			
-		
-		
+	 
 		return jdbcTemplate.query(sql, params,
 				new RowMapper<>() {
 			//num row for this may be more than one?
@@ -165,9 +153,7 @@ public class DefaultPokedexEntryDao implements PokedexEntryDao{
 				// @formatter:on
 			}});
 	}
-			
-	
-	
+	 
 	// end package
 	}
 

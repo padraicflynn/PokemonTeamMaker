@@ -12,11 +12,6 @@ import pokemon.entity.PokedexEntryEntity;
 import pokemon.entity.PokemonTypeEnum;
 import pokemon.service.PokedexEntryService;
 
- 
-	
-	 
-
-
 	@RestController
 	@Slf4j 
 public class DefaultPokedexEntryController implements PokedexEntryController{
@@ -25,7 +20,8 @@ public class DefaultPokedexEntryController implements PokedexEntryController{
 	 private PokedexEntryService pokedexEntryService;
 	  
 	 
-// GET Pokemon by ALL THREE VALUES (not easy for a user to do, not practical in real world app but will use for this project)
+// GET Pokemon by using ALL THREE VALUES, the other methods only need one value to search, 
+// this is more for testing/seeing the code work.
 	 
 	  @Override
 	public List<PokedexEntryEntity> fetchPokedexEntry(int pokemon_pk, String pokemon_name, PokemonTypeEnum pokemon_type) {
@@ -33,10 +29,11 @@ public class DefaultPokedexEntryController implements PokedexEntryController{
  
 		return pokedexEntryService.fetchPokedexEntry(pokemon_pk, pokemon_name, pokemon_type);
 	}
-	
-//!!!!!End search by Entry!!!!
-//!!!! Read By ID!!!!!
-// POKEMON BY Pokedex ID (Primary key)
+
+// Here we can search our Pokedéx Entry table, the main database
+// by looking up Pokémon by their ID entry.
+// Their ID auto increments, and I put them in order so
+// they will line up with the official Pokédx.
 	
 	@Override
 	public List<PokedexEntryEntity> fetchPokedexEntryByID(int pokemon_pk) {
@@ -44,8 +41,7 @@ public class DefaultPokedexEntryController implements PokedexEntryController{
 			return pokedexEntryService.fetchPokedexEntryByID(pokemon_pk);
 		}
 	
-//!!!!End search by ID!!!!
-// POKEMON BY TYPE (type is a little muddled: stretch goal is to clean up enum and be able to search for two type pokemon by either/or type)
+// Here we can search by the typing of the Pokémon. The types are all in an enum.
 	
 	@Override
 	public List<PokedexEntryEntity> fetchPokedexEntryByType(PokemonTypeEnum pokemon_type) {
@@ -53,17 +49,16 @@ public class DefaultPokedexEntryController implements PokedexEntryController{
 			return pokedexEntryService.fetchPokedexEntryByType(pokemon_type);
 		}
 
-//!!!End search by TYPE!!!!
-//!!!POKEMON BY NAME!!!
+//Here we can search the database by the name of the pokemon, 
+// maybe as a stretch goal I can use the LIKE operator in a
+// sql statement so you can search by partial name, making it easier
+// if you don't know the right spelling but are close enough. 
 	
 	@Override
 	public List<PokedexEntryEntity> fetchPokedexEntryByName(String pokemon_name) {
 		 
 			return pokedexEntryService.fetchPokedexEntryByName(pokemon_name);
 		}
-	
-	
-	
 	//end of package
 	}
 	

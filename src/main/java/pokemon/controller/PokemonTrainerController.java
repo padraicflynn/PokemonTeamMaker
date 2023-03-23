@@ -24,16 +24,15 @@ import io.swagger.v3.oas.annotations.servers.Server;
 import pokemon.entity.TrainerTableEntity;
 import pokemon.entity.UserMadeTeamsEntity;
 import pokemon.service.DefaultPokemonTrainerService;
-
-
-//import pokemon.service.DefaultPokemonTrainerService.NewTeamTrainer;
-
+ 
 @Validated
 @RequestMapping("/trainer")
 @OpenAPIDefinition(info = @Info(title = "Pokemon trainer info"), servers = { @Server(url = "http://localhost:8080", description = "Local server.")})
 public interface PokemonTrainerController {
 
-	//API responses for reading the trainers table
+	//Here are out API responses for anything to do with the trainer table. We are able to 
+	// read a list of trainers, make a trainer and delete one. 
+	
 	@Operation (
 		      summary = "Searches the Database of trainers by ID, "
 		      		+ "the first two are Gary and Lance and then any user made trainers",
@@ -71,9 +70,7 @@ public interface PokemonTrainerController {
 		 List<TrainerTableEntity> fetchTrainerEntryById(
 		      @RequestParam(required = false)
 		      int trainer_id_pk);
-	
-	//!!! create trainer
-	
+ 
 		@Operation (
 				summary = "Create a new trainer. ",
 				description = "Create a new trainer. A trainer can then have a team. ",
@@ -107,12 +104,7 @@ public interface PokemonTrainerController {
 		@ResponseStatus(code = HttpStatus.CREATED)
 		TrainerTableEntity createTrainer(
 				@RequestParam(required = false) String trainer_name);
-			    
-		
-	//!!!end create trainer
-		
-		
-		//!!!delete a trainer
+ 
 		
 		@Operation (
 				summary = "Delete a trainer!",
@@ -144,7 +136,6 @@ public interface PokemonTrainerController {
 		@DeleteMapping
 		@ResponseStatus(code = HttpStatus.OK)
 		TrainerTableEntity deleteTrainer(int trainer_id_pk);
-		
-	//!!!end delete a team
+ 
 // end package
 }

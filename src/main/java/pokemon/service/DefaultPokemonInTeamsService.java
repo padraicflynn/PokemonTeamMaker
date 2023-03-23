@@ -18,6 +18,7 @@ public class DefaultPokemonInTeamsService implements PokemonInTeamsService{
 	@Autowired
 	private DefaultPokemonInTeamsDao pokemonInTeamsDao;
 	
+//get team
 	@Override
 	public List<PokemonInTeamsEntity> fetchPokemonInTeamsById(int team_name_fk) {
 		log.info("There a bunch of trainer owned pokemon here! " + team_name_fk);
@@ -32,6 +33,7 @@ public class DefaultPokemonInTeamsService implements PokemonInTeamsService{
 		return pokemonInTeamsEntry;
 	}
 
+//post/add to team
 	@Override
 	public PokemonInTeamsEntity addPokemonToTeam(int team_name_fk, int pokemon_pk_fk) {
 		log.info("We are adding some new team members!" + pokemon_pk_fk);

@@ -17,7 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 import pokemon.entity.UserMadeTeamsEntity;
  
 
-// the component scanner is useful as it helps me when builder other classes to call back on component classes
+// the component scanner is useful as it helps me when building other classes to call back on component classes
 @Component
 @Slf4j
 public class DefaultUserMadeTeamsDao implements UserMadeTeamsDao{

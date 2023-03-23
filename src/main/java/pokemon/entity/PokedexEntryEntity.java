@@ -20,7 +20,7 @@ public class PokedexEntryEntity implements Comparable<PokedexEntryEntity>{
 	
 	// here we set up our entities for the database. this represents all the info in our database,
 	// and will take the info from the data base and 
-	//make it usable java objects for the other layers to use
+	//make it usable as objects for the other layers to use
 
 	private int pokemon_pk;
 	private String pokemon_name;
@@ -34,7 +34,6 @@ public class PokedexEntryEntity implements Comparable<PokedexEntryEntity>{
 	}
 	
 	
-	
 	@Override
 	public int compareTo(PokedexEntryEntity that) {
 		 
@@ -46,6 +45,7 @@ public class PokedexEntryEntity implements Comparable<PokedexEntryEntity>{
 				.thenComparing(PokedexEntryEntity::getPokemon_type)
 				.compare(this,  that);
 	}
+	
 	
 	// formatter:on
 	 

@@ -39,9 +39,7 @@ import io.swagger.v3.oas.annotations.*;
 public interface PokedexEntryController {
 	  
 	 // formatter: off
-
-	// API responses for reading the list of available Pokemon
-	
+	// API responses for the Pokédex table, our database of available Pokémon. The main use here is search a few different ways.
 	@Operation (
 	      summary = "Search for Pokemon by entering the ID, Name, and Type,"
 	      		+ " up to 151, just to see it in the database!",

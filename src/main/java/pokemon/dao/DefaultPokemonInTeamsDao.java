@@ -17,6 +17,15 @@ import pokemon.entity.PokemonTypeEnum;
 
 @Component
 @Slf4j
+
+// Here we work with the Pokémon in teams table. We mainly add team members one at a time.
+// We can also see the made teams and most of the info. The trainer table had some trouble 
+// with the join statements, stretch goal: get the trainer name to show up when reading
+// the made teams. As of this writing we see the trainer FK, which tells us
+// what trainer owns the team, so we know which trainer owns which teams. 
+// In the USER MADE TEAMS table we can see the trainer name, so it works there at least. 
+// You see some later attempts at a full join near the bottom, but not there yet. 
+
 public class DefaultPokemonInTeamsDao implements PokemonInTeamsDao{
 	
 	@Autowired
@@ -35,17 +44,15 @@ public class DefaultPokemonInTeamsDao implements PokemonInTeamsDao{
 				return PokemonInTeamsEntity.builder().team_name_fk(team_name_fk).pokemon_pk_fk(pokemon_pk_fk).build();
 	}
 	
-	
 	@Override
 	public List<PokemonInTeamsEntity> fetchPokemonInTeamsById(int team_name_fk) {
-		
-		 
-		
+	 	
 		String sql = ""
 				+ "SELECT * "
 				+ "FROM pokemon_in_teams "
 				+ "RIGHT JOIN pokedex_entry ON pokemon_in_teams.pokemon_pk_fk = pokedex_entry.pokemon_pk "
 				+ "LEFT JOIN user_made_teams ON pokemon_in_teams.team_name_fk = user_made_teams.team_name_pk "
+			// Maybe full join user made team and trainer table then into pokemon in teams.
 			//	+ "LEFT JOIN trainer_table ON user_made_teams.trainer_id_fk = trainer_table.trainder_id_pk "
 				+ "WHERE team_name_fk = :team_name_fk "; 
 		// formatter:on

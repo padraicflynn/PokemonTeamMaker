@@ -18,47 +18,35 @@ public class DefaultUserMadeTeamsController implements UserMadeTeamsController{
 	@Autowired
 	private UserMadeTeamsService userMadeTeamsService;
 	
-	//Get/Read user made teams, two premade
+	
+//Get/Read user made teams, two are premade for testing and showing off populating the table.
 	@Override
 	public List<UserMadeTeamsEntity> fetchUserMadeTeamsById(int team_name_pk) {
 		
 		return userMadeTeamsService.fetchUserMadeTeamsById(team_name_pk);
 		
 	}
-
-//!!! end read team
-	
-//!!! create team
+ 
+//create team
 	@Override
 	public UserMadeTeamsEntity createTeam(String team_name, int trainer_id_fk, String description) {
 		log.info("team_name={}, trainer_id_fk={}, description{}");
 		return userMadeTeamsService.createTeam(team_name, trainer_id_fk, description);
 	 }
-//!!!end create team
-
-//!!!update a team:
-	
+ 
+// update a team:
 @Override
 	public UserMadeTeamsEntity updateTeam(String team_name, int trainer_id_fk, String description, int team_name_pk) {
 		log.info("team_name={}, trainer_id_fk={}", "description{}");
 		return userMadeTeamsService.updateTeam(team_name, trainer_id_fk, description, team_name_pk);
 	}
-	
-	
-//!!!end update team.
-	
-//!!!delete a team:
-
+  
+// delete a team:
 	@Override
 	public UserMadeTeamsEntity deleteTeam(int team_name_pk) {
 		 log.info("team_name_pk={}");
 		return userMadeTeamsService.deleteTeam(team_name_pk);
 	}
-
-//!!!end delete a team.
-	
+ 
 //end package 
-
-
-	
 	}

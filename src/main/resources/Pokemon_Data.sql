@@ -151,8 +151,11 @@ INSERT INTO pokedex_entry (pokemon_name, pokemon_type) VALUES
 ('Mewtwo', 'Psychic'),
 ('Mew', 'Psychic');
 
+insert into trainer_table (trainer_name) values
+('Gary'), ('Lance');
+ 
 insert into user_made_teams (team_name, trainer_id_fk, description) values ('Starter team for Gary', 1, 'A starter team for Gary');
-insert into user_made_teams (team_name, trainer_id_fk, description) values ('A team of dragons', 2, 'A team of dragons!');
+insert into user_made_teams (team_name, trainer_id_fk, description) values ('A team of dragons', 2, 'A team of dragons for Lance!');
 
 INSERT INTO pokemon_in_teams (team_name_fk, pokemon_pk_fk)
 VALUES

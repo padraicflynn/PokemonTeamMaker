@@ -28,7 +28,7 @@ import pokemon.entity.UserMadeTeamsEntity;
 public interface PokemonInTeamsController {
 
 	// formatter: off
-		// API responses for the reading what Pokemon are in which team
+		// API responses for Pokémon in teams table. What Pokémon are in a team, and the team's trainer ID.
 		
 		@Operation (
 				summary = "See what Pokemon are used, and what the teams are made of and who their trainers are!",
@@ -64,8 +64,8 @@ public interface PokemonInTeamsController {
 				@RequestParam(required = false)
 				int team_name_pk);
 		
-//!Add pokemon
-		//!!!update a team
+
+		// update a team, how we add Pokémon to a team one at a time. Stretch goal: add more than one at a time. 
 		@Operation (
 				summary = "Add Pokemon to an existing team.",
 				description = "Add pokemon to a team that you already made! Honor system for this version, no more than six!",
@@ -93,23 +93,6 @@ public interface PokemonInTeamsController {
 						
 						@Parameter(name = "pokemon_pk_fk", allowEmptyValue = false, required = false,
 								description = "Add the Pokemon's ID number! You can look that up in the Pokedex section!"),
-						
-						/* 
-						@Parameter(name = "pokemon_pk_fk", allowEmptyValue = false, required = false,
-						description = "Add the Pokemon's ID number! You can look that up in the Pokedex section!"),
-						
-						@Parameter(name = "pokemon_pk_fk", allowEmptyValue = false, required = false,
-						description = "Add the Pokemon's ID number! You can look that up in the Pokedex section!"),
-						
-						@Parameter(name = "pokemon_pk_fk", allowEmptyValue = false, required = false,
-						description = "Add the Pokemon's ID number! You can look that up in the Pokedex section!"),
-						
-						@Parameter(name = "pokemon_pk_fk", allowEmptyValue = false, required = false,
-						description = "Add the Pokemon's ID number! You can look that up in the Pokedex section!"),
-						
-						@Parameter(name = "pokemon_pk_fk", allowEmptyValue = false, required = false,
-						description = "Add the Pokemon's ID number! You can look that up in the Pokedex section!")
-						*/ 
 				}
 				 )
 		
@@ -119,8 +102,6 @@ public interface PokemonInTeamsController {
 				
 				@RequestParam(required = false) int team_name_fk,
 		        @RequestParam(required = true) int pokemon_pk_fk);
-	//!!!end update a team
-		
-		
+ 
 	// end package 
 }

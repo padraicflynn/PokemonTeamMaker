@@ -18,16 +18,13 @@ public class DefaultTrainerController implements PokemonTrainerController{
 	@Autowired
 	private PokemonTrainerService pokemonTrainerService;
 	
-	//Get/Read trainers
+// Get/Read trainers.
 	@Override
 	public List<TrainerTableEntity> fetchTrainerEntryById(int trainer_id_pk) {
 		
 		return pokemonTrainerService.fetchTrainerEntryById(trainer_id_pk);
 	}	
-
-  	
-
-	
+ 
 //create trainer
 	@Override
 	public TrainerTableEntity createTrainer(String trainer_name) {
@@ -35,17 +32,13 @@ public class DefaultTrainerController implements PokemonTrainerController{
 		return pokemonTrainerService.createTrainer(trainer_name);
 	}
 
+// delete a trainer
 	@Override
 	public TrainerTableEntity deleteTrainer(int trainer_id_pk) {
 		log.info("trainer_id_pk={}");
 		return pokemonTrainerService.deleteTrainer(trainer_id_pk);
 		 
 	}
- 
-
-	 
-
-	 
-	 
+  
 //end package
 }

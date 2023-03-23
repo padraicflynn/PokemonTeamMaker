@@ -24,9 +24,7 @@ public class DefaultPokedexEntryService implements PokedexEntryService {
 
 	@Autowired
 	private DefaultPokedexEntryDao pokemonTeamDao;
-	
 
-	
 	@Override
 	public List<PokedexEntryEntity> fetchPokedexEntry(
 			int pokemon_pk, String pokemon_name, PokemonTypeEnum pokemon_type) {
@@ -41,13 +39,9 @@ public class DefaultPokedexEntryService implements PokedexEntryService {
 		
 		throw new NoSuchElementException(msg);
 		}
-		
-	//	Collections.sort(pokemonEntry);
-		
+
 		return pokemonEntry;
 	}
-
-
 
 	@Override
 	public List<PokedexEntryEntity> fetchPokedexEntryByID(int pokemon_pk) {
@@ -63,13 +57,9 @@ public class DefaultPokedexEntryService implements PokedexEntryService {
 			
 			throw new NoSuchElementException(msg);
 			}
-			
-		//	Collections.sort(pokemonEntry);
-			
+
 			return pokemonEntry;
 	}
-
-
 
 	@Override
 	public List<PokedexEntryEntity> fetchPokedexEntryByType(PokemonTypeEnum pokemon_type) {
@@ -84,13 +74,9 @@ public class DefaultPokedexEntryService implements PokedexEntryService {
 		
 		throw new NoSuchElementException(msg);
 		}
-		
-	//	Collections.sort(pokemonEntry);
-		
+
 		return pokemonEntry;
 	}
-
-
 
 	@Override
 	public List<PokedexEntryEntity> fetchPokedexEntryByName(String pokemon_name) {
@@ -105,9 +91,7 @@ public class DefaultPokedexEntryService implements PokedexEntryService {
 		
 		throw new NoSuchElementException(msg);
 		}
-		
-	//	Collections.sort(pokemonEntry);
-		
+
 		return pokemonEntry;
 	}
 }

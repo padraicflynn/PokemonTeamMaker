@@ -20,6 +20,7 @@ public class DefaultUserMadeTeamsService implements UserMadeTeamsService{
 	@Autowired
 	private DefaultUserMadeTeamsDao userMadeTeamsDao;
 
+// get team
 	@Override
 	public List<UserMadeTeamsEntity> fetchUserMadeTeamsById(int team_name_pk) {
 		 log.info("Hey, here is a team that was requested! " + team_name_pk);
@@ -36,20 +37,21 @@ public class DefaultUserMadeTeamsService implements UserMadeTeamsService{
 				 return userMadeTeamsEntry;
 	}
 
-	//create user made team
+//create user made team
 	@Override
 	public  UserMadeTeamsEntity createTeam(String team_name, int trainer_id_fk, String description) {
 		log.info("The create team method was called with team_name={}, trainer_id_fk={}, description={}", team_name, trainer_id_fk, description);
 		
 		return userMadeTeamsDao.createTeam(team_name, trainer_id_fk, description);
 	}
-
+//update team
 	@Override
 	public UserMadeTeamsEntity updateTeam(String team_name, int trainer_id_fk, String description, int team_name_pkl) {
 		log.info("The update team method was envoked with team_name={}, trainer_id_fk={}, description={}", team_name, trainer_id_fk, description);
 		return userMadeTeamsDao.updateTeam(team_name, trainer_id_fk, description, team_name_pkl);
 	}
 
+// delete team
 	@Override
 	public UserMadeTeamsEntity deleteTeam(int team_name_pk) {
 		log.info("The update team method was envoked with team_name_pk={}", team_name_pk);
